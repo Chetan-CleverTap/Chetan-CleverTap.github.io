@@ -33,7 +33,7 @@
     <script type="text/javascript">
         var clevertap = { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [] };
         // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-        clevertap.account.push({ "id": "TEST-549-W7Z-775Z" });
+        clevertap.account.push({ "id": "449-W7Z-775Z" });
         clevertap.privacy.push({ optOut: false }); //set the flag to true, if the user of the device opts out of sharing their data
         clevertap.privacy.push({ useIP: false }); //set the flag to true, if the user agrees to share their IP data
         (function () {
@@ -80,17 +80,6 @@
         window.mParticle = {
             config: {
                 isDevelopmentMode: true,
-                identifyRequest: {
-                    userIdentities: {
-                        email: 'email@example.com',
-                        customerid: '123456',
-                    },
-                },
-                identityCallback: function (result) {
-                    // Do something once an identity call has been made.
-                    // For more information, see https://docs.mparticle.com/developers/sdk/web/idsync/#sdk-initialization-and-identify
-                    console.log(result);
-                }
             },
         };
 
@@ -233,13 +222,25 @@
         // document.getElementById("show-pop-up").addEventListener("click", showPopUp);
 
         function pushProfile() {
-            clevertap.profile.push({
-                "Site": {
-                    "Name": "Jack Montana", // User's name
-                    "Email": "jackmontana@example.com",
-                    "Identity": "jackmontana_ct"
+
+            var identityRequest = {
+                userIdentities: {
+                    email: 'three@cttest.com',
+                    customerid: '3333'
                 }
-            });
+            };
+            var identityCallback = function (result) {
+                if (result.getUser()) {
+                    console.log(result.getUser());
+                    clevertap.onUserLogin.push({
+                        "Site": {
+                            "Email": "three@cttest.com",
+                            "Identity": "3333"
+                        }
+                    });
+                }
+            };
+            mParticle.Identity.login(identityRequest, identityCallback)
         }
 
         function allowPush() {
@@ -255,7 +256,28 @@
         }
 
         function showPush() {
-            clevertap.event.push("Show Push");
+
+            let myPromise = new Promise(function (success, failure) {
+                try {
+                    mParticle.logEvent(
+                        'Show Push',
+                        mParticle.EventType.Other
+                    )
+                    success()
+                } catch (err) {
+                    failure()
+                }
+            })
+
+            myPromise.then(
+                function (value) {
+                    clevertap.event.push("Show Push");
+                },
+                function (error) {
+                    console.log("Error");
+                }
+            );
+
         }
 
         function showBoxPopUp() {
