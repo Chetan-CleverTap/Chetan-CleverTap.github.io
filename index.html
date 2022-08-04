@@ -1,0 +1,227 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+    <!--====== Title ======-->
+    <title>Basic - SaaS Landing Page</title>
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+        
+    <!--====== Animate CSS ======-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+        
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.css">
+        
+    <!--====== Font Awesome CSS ======-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+    
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript">
+         var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+         // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+            clevertap.account.push({"id": "TEST-549-W7Z-775Z"});
+            clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+            clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+             (function () {
+                     var wzrk = document.createElement('script');
+                     wzrk.type = 'text/javascript';
+                     wzrk.async = true;
+                     wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+                     var s = document.getElementsByTagName('script')[0];
+                     s.parentNode.insertBefore(wzrk, s);
+                     // console.log("Inside" , clevertap.getCleverTapID());
+              })();
+                                          // myFunction()
+
+            setTimeout(myFunction, 3000);
+            function myFunction() {
+                console.log("Outside" , clevertap.getCleverTapID());
+            }
+
+
+            function updateEmail(email) {
+                clevertap.profile.push(
+                  {"Site": { "Email": email }
+                }
+                  )
+            }
+            // clevertap.notificationCallback = function(msg){
+            //    //raise the notification viewed and clicked events in the callback
+            //    clevertap.raiseNotificationViewed();
+            //    console.log(JSON.stringify(msg));//your custom rendering implementation here
+            //    var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+            //    $button.click(function(){
+            //        clevertap.raiseNotificationClicked();
+            //     });
+            //   };
+    </script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+</head>
+
+<body>
+    
+    <header class="header-area">
+        <div id="home" class="header-hero bg_cover" style="background-image: url(assets/images/banner-bg.svg)">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="header-hero-content text-center">
+                            <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.1s">CleverTap Web SDK Integration
+                            </h2>
+
+                            <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.7s">
+                                <video width="600" height="450" autoplay loop muted id="home-banner-video">
+                                     <source src="https://d35fo82fjcw0y8.cloudfront.net/2019/10/08230731/homevideo-banner.mp4" type="video/mp4">
+                                 </video>
+
+                            </div> <!-- header hero image -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="brand-logo d-flex align-items-center justify-content-center justify-content-md-between">
+                                           
+                                            <input type="button" value="Create User Profile" id = "create-profile" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+
+                                            <input type="button" value="Allow Web Push" id = "allow-push" class="main-btn wow fadeInUp"   data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+
+                                            <input type="button" value="Show Web Push Notification" id = "show-push" class="main-btn wow fadeInUp"data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+                                                    
+                                        </div> <!-- brand logo -->
+                                    </div>
+                                </div>   <!-- row -->
+
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="brand-logo d-flex align-items-center justify-content-center justify-content-md-between">
+                                                   
+                                            <input type="button" value="Show Box Pop Up" id = "box-pop-up" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+
+                                            <input type="button" value="Show Banner Pop Up" id = "banner-pop-up" class="main-btn wow fadeInUp"   data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+
+                                            <input type="button" value="Show Interstitial Pop Up" id = "interstitial-pop-up" class="main-btn wow fadeInUp"data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+                                                    
+                                        </div> <!-- brand logo -->
+                                    </div>
+                                 </div>   <!-- row -->
+                            </div> <!-- container -->
+                        </div> <!-- header hero content -->
+                    </div>
+                 </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- header hero -->
+    </header>
+
+    <!--====== Jquery js ======-->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <!--====== Plugins js ======-->
+    <script src="assets/js/plugins.js"></script>
+    
+    
+    <!--====== Scrolling Nav js ======-->
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/scrolling-nav.js"></script>
+    
+    <!--====== wow js ======-->
+    <script src="assets/js/wow.min.js"></script>
+    
+    <!--====== Particles js ======-->
+    <script src="assets/js/particles.min.js"></script>
+    
+    <!--====== Main js ======-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBwNaJZUd3ZlvVO86XPNjajF6STAbaUeOU",
+        authDomain: "clevertap-integration-demo.firebaseapp.com",
+        databaseURL: "https://clevertap-integration-demo.firebaseio.com",
+        projectId: "clevertap-integration-demo",
+        storageBucket: "clevertap-integration-demo.appspot.com",
+        messagingSenderId: "359269401864",
+        appId: "1:359269401864:web:e096dbdd0193e9eb2c18bd"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        document.getElementById("create-profile").addEventListener("click", pushProfile);
+        
+        document.getElementById("allow-push").addEventListener("click", allowPush);
+        
+        document.getElementById("show-push").addEventListener("click", showPush);
+
+        document.getElementById("box-pop-up").addEventListener("click", showBoxPopUp);
+
+        document.getElementById("banner-pop-up").addEventListener("click", showBannerPopUp);
+
+        document.getElementById("interstitial-pop-up").addEventListener("click", showInterstitialPopUp);
+
+        // document.getElementById("show-pop-up").addEventListener("click", showPopUp);
+
+        function pushProfile() {
+           clevertap.profile.push({
+             "Site": {
+               "Name": "Jack Montana", // User's name
+               "Email":"jackmontana@example.com",
+               "Identity":"jackmontana_ct"
+             }
+            });
+        }
+
+        function allowPush() {
+           clevertap.event.push("Allow Push");
+
+           clevertap.notifications.push({
+                "titleText":'Would you like to receive Push Notifications?',
+                "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
+                "okButtonText":'Sign me up!',
+                "rejectButtonText":'No thanks',
+                "okButtonColor":'#f28046'});
+        }
+
+        function showPush() {
+           clevertap.event.push("Show Push");
+       }
+
+        function showBoxPopUp() {
+           clevertap.event.push("Show Box Pop Up");
+       }
+
+        function showBannerPopUp() {
+           clevertap.event.push("Show Banner Pop Up");
+       }
+
+        function showInterstitialPopUp() {
+           clevertap.event.push("Show Interstitial Pop Up");
+       }
+    </script>
+    
+</body>
+
+</html>
